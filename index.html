@@ -33,6 +33,19 @@
             document.querySelector("#footer").innerHTML = 'marker lost'
         })
     </script> -->
+    <script>
+
+        let myImageTracker = document.getElementById("my-image-tracker");
+        
+        myImageTracker.addEventListener("zappar-visible", () => {
+          console.log("Image has become visible");
+        });
+        
+        myImageTracker.addEventListener("zappar-notvisible", () => {
+          console.log("Image is no longer visible");
+        });
+        
+        </script>
 </head>
 <body>
     <!-- <div id="footer"></div> -->
@@ -41,10 +54,10 @@
             <a-box scale="100 100 100"></a-box>
         </a-nft>  -->
         <a-assets>
-            <a-asset-item id="markerku" src="./asset/tes.zpt"></a-asset>
+            <a-asset-item id="my-image-tracker" src="./asset/tes.zpt"></a-asset>
         </a-assets>
         <a-entity camera zappar-camera></a-entity>
-        <a-entity zappar-image="#markerku">
+        <a-entity zappar-image="#my-image-tracker">
             <a-box color="red"></a-box>
         </a-entity>
     </a-scene>
