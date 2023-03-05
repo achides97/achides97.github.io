@@ -4,62 +4,41 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WEB AR Test
-    </title>
-
-    <script src="https://aframe.io/releases/1.0.3/aframe.min.js"></script>
-    <!-- <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script> -->
+    
+    <title>WEB AR Test</title>
+    
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
     <script src="https://libs.zappar.com/zappar-aframe/0.2.5/zappar-aframe.js"></script>
-    <!-- <style>
-        #footer{
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translate(-50%,-50%);
-            background-color: rgba(0, 0, 0, 0);
-            z-index: 9999;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            font-size: 3em;
-        }
-    </style>
-    <script>
-        addEventListener('markerFound',function(){
-            document.querySelector("#footer").innerHTML = 'marker found';
-        });
-        addEventListener('markerLost',function(){
-            document.querySelector("#footer").innerHTML = 'marker lost'
-        })
-    </script> -->
-    <script>
+    <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+    <script src="//cdn.rawgit.com/donmccurdy/aframe-physics-system/v4.0.1/dist/aframe-physics-system.min.js"></script>
 
-        let myImageTracker = document.getElementById("my-image-tracker");
-        
-        myImageTracker.addEventListener("zappar-visible", () => {
-          console.log("Image has become visible");
-        });
-        
-        myImageTracker.addEventListener("zappar-notvisible", () => {
-          console.log("Image is no longer visible");
-        });
-        
-        </script>
 </head>
-<body>
-    <!-- <div id="footer"></div> -->
-    <a-scene>
-        <!-- <a-nft type="nft" url='./asset/tes' emitevents='true'>
-            <a-box scale="100 100 100"></a-box>
-        </a-nft>  -->
-        <a-assets>
-            <a-asset-item id="my-image-tracker" src="./asset/tes.zpt"></a-asset>
-        </a-assets>
-        <a-entity camera zappar-camera></a-entity>
-        <a-entity zappar-image="#my-image-tracker">
-            <a-box color="red"></a-box>
-        </a-entity>
-    </a-scene>
+
+<body style="margin:0; overflow:hidden">
+
+
+<script>
+    AFRAME.registerComponent("locationfinder",{
+        init: ()=>{
+            navigator.geolocation.getCurrentPosition((location)=>{
+                console.log(location);
+            });
+        },
+    });
+</script>
+    
+<a-scene>
+       <a-camera gps-camera locationfinder rotation-reader></a-camera>
+    <a-text
+    value="DISINIIIIII"
+    scale="15 15 15"
+    look-at="[gps-camera]"
+    align="center"
+    gps-entity-place="latitude=-7.32168084370087; longitude:112.72147822160525;"
+    >
+    </a-text>
+</a-scene>
+
 </body>
 </html>
