@@ -29,15 +29,22 @@
 </script>
     
 <a-scene>
-       <a-camera gps-camera locationfinder rotation-reader></a-camera>
+    <a-camera gps-camera locationfinder rotation-reader></a-camera>
     <a-text
     value="Mangkabayan"
-    scale="7 7 7"
+    scale="15 15 15"
     look-at="[gps-camera]"
     align="center"
-    gps-entity-place="latitude=-7.322224135275281,longitude=112.72117494381519;"
+    gps-entity-place="latitude:-7.322224135275281,longitude:112.72117494381519;"
     >
     </a-text>
+    <a-box 
+    color="red"
+    scale="15 15 15"
+    look-at="[gps-camera]"
+    align="center"
+    gps-entity-place="latitude:-7.321759105318824,longitude:112.72124418162248;">
+    </a-box>
 </a-scene>
 
 </body>
